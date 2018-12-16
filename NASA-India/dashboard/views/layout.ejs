@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+    <!-- <link rel="icon" type="image/png" href="./Login_v12/images/icons/favicon.ico" /> -->
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css" />
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <!--===============================================================================================-->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+
+    <!--===============================================================================================-->
+    	<script src="./Login_v12/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="/vendor/bootstrap/js/popper.js"></script>
+    	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="/js/main.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+
+    <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.fixed-action-btn');
+          var instances = M.FloatingActionButton.init(elems, {direction: "left",hoverEnabled: true});
+      });
+
+      window.onload = setTimeout(function(){
+        var pre_loader = document.getElementById('pre-loader');
+        pre_loader.style.visibility = 'hidden';
+      },1000);
+
+      socket.on('myEvent', function(data) {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: data.lat, lng: data.lng},
+            zoom: 15
+          });
+      });
+
+    </script>
+
+
+
+
+    <style>
+        .minimal{
+            margin: 0px!important;
+            padding: 0px!important;
+        }
+
+        .sign{
+            position: relative!important;
+            float: right!important;
+            right: -340px!important;
+            margin: 0px!important;
+        }
+
+        .menu{
+            position: absolute!important;
+            top: 0px!important;
+            margin: 0px!important;
+            padding: 7px!important;
+        }
+
+        .navbar, nav{
+
+            margin-top: 5px;
+
+            height: 70px!important;
+            line-height: 70px!important;
+            max-height: 70px!important;
+
+            width: 50%!important;
+            position: fixed;
+            left: 370px;
+
+            border-radius: 50px;
+        }
+
+        .nav-wrapper{
+            border-radius: 50px;
+        }
+
+        .logo{
+            height: 75px;
+            width: auto;
+
+            margin-left: 20px;
+            margin-top: 0px;
+
+        }
+
+        .material-icons{
+            font-size: 35px!important;
+            margin: 0px!important;
+            padding: 0px!important;
+        }
+
+        #slider {
+          background-color: #424242;
+          width: 100%;
+          height: 100%;
+
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+          -webkit-transition: background-image 0.5s ease;
+          -moz-transition: background-image 0.5s ease;
+          -ms-transition: background-image 0.5s ease;
+          transition: background-image 0.5s ease;
+        }
+
+        #overlay {
+          background-color: rgba(0, 0, 0, 0.25);
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: -1;
+        }
+
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5OGgwv1-V057DA9-yengxpeXJkioRkj8&callback=initMap"
+    async defer></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar-fixed minimal">
+        <%- include('partials/navbar2') %>
+        <!-- <img src="/images/bg.jpg" class="responsive-img" style="z-index: -1" > -->
+    </div>
+
+    <%- body %>
+
+  </body>
+</html>
