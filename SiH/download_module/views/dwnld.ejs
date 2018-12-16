@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+    <h1>Html table to excel or csv <small style="font-size:17px">---With export for IE and Edge</small></h1>
+
+<p> Test1: <button id="btnExport" onclick="javascript:xport.toXLS('testTable');"> Export to XLS</button> <em>&nbsp;&nbsp;&nbsp;Export the table to XLS with CSV fallback for IE & Edge</em>
+  </p>
+
+<p>Test 2: <button id="btnExport" onclick="javascript:xport.toCSV('testTable');"> Export to CSV</button> <em>&nbsp;&nbsp;&nbsp;Export the table to CSV for all browsers</em>
+  </p>
+
+<p> Test3: <button id="btnExport" onclick="javascript:xport.toXLS('testTable', 'outputdata');"> Export to XLS</button> <em>&nbsp;&nbsp;&nbsp;Export the table to XLS with custom filename</em>
+  </p>
+<br />
+
+<% var obj=[{'name':'abc','phone':'12345'},{'name':'cdef','phone':'56678'}]; %>
+
+<table id="testTable" summary="Code page support in different versions of MS Windows." rules="groups" frame="hsides" border="2" class="table table-striped">
+  <caption>CODE-PAGE SUPPORT IN MICROSOFT WINDOWS</caption>
+  <colgroup align="center"></colgroup>
+  <colgroup align="left"></colgroup>
+  <colgroup span="2" align="center"></colgroup>
+  <colgroup span="3" align="center"></colgroup>
+  <thead valign="top">
+    
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr>
+      <% obj.forEach(function(item){ %>
+            <td><%= item.name %></td>
+            <td><%= item.phone %></td>
+    <% }) %>
+    </tr>
+  </tbody>
+
+</table>
+
+<script type="text/javascript">
+  var xport = {
+  _fallbacktoCSV: true,  
+  toXLS: function(tableId, filename) {   
+    this._filename = (typeof filename == 'undefined') ? tableId : filename;
+    
+    //var ieVersion = this._getMsieVersion();
+    //Fallback to CSV for IE & Edge
+    if ((this._getMsieVersion() || this._isFirefox()) && this._fallbacktoCSV) {
+      return this.toCSV(tableId);
+    } else if (this._getMsieVersion() || this._isFirefox()) {
+      alert("Not supported browser");
+    }
+
+    //Other Browser can download xls
+    var htmltable = document.getElementById(tableId);
+    var html = htmltable.outerHTML;
+
+    this._downloadAnchor("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" + encodeURIComponent(html), 'xls');
+  },
+  toCSV: function(tableId, filename) {
+    this._filename = (typeof filename === 'undefined') ? tableId : filename;
+    // Generate our CSV string from out HTML Table
+    var csv = this._tableToCSV(document.getElementById(tableId));
+    // Create a CSV Blob
+    var blob = new Blob([csv], { type: "text/csv" });
+
+    // Determine which approach to take for the download
+    if (navigator.msSaveOrOpenBlob) {
+      // Works for Internet Explorer and Microsoft Edge
+      navigator.msSaveOrOpenBlob(blob, this._filename + ".csv");
+    } else {      
+      this._downloadAnchor(URL.createObjectURL(blob), 'csv');      
+    }
+  },
+  _getMsieVersion: function() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+    }
+
+    var trident = ua.indexOf("Trident/");
+    if (trident > 0) {
+      // IE 11 => return version number
+      var rv = ua.indexOf("rv:");
+      return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+    }
+
+    var edge = ua.indexOf("Edge/");
+    if (edge > 0) {
+      // Edge (IE 12+) => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+    }
+
+    // other browser
+    return false;
+  },
+  _isFirefox: function(){
+    if (navigator.userAgent.indexOf("Firefox") > 0) {
+      return 1;
+    }
+    
+    return 0;
+  },
+  _downloadAnchor: function(content, ext) {
+      var anchor = document.createElement("a");
+      anchor.style = "display:none !important";
+      anchor.id = "downloadanchor";
+      document.body.appendChild(anchor);
+
+      // If the [download] attribute is supported, try to use it
+      
+      if ("download" in anchor) {
+        anchor.download = this._filename + "." + ext;
+      }
+      anchor.href = content;
+      anchor.click();
+      anchor.remove();
+  },
+  _tableToCSV: function(table) {
+    // We'll be co-opting `slice` to create arrays
+    var slice = Array.prototype.slice;
+
+    return slice
+      .call(table.rows)
+      .map(function(row) {
+        return slice
+          .call(row.cells)
+          .map(function(cell) {
+            return '"t"'.replace("t", cell.textContent);
+          })
+          .join(",");
+      })
+      .join("\r\n");
+  }
+};
+
+</script>
+</body>
+</html>

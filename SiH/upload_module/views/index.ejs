@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Upload Example</title>
+</head>
+<body>
+<form action="/upload/<%=message%>" enctype="multipart/form-data" method="POST">
+    <input type="file" accept=".csv,.pdf" name="upload" multiple>
+    <!--uid: <input type="text" name="uid">-->
+    <input type="submit" value="Upload">
+    <br>
+    <br>
+
+    <thead>
+      <tr>
+        <th>Uploaded Files</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% var obj=message2 %>
+    <% if(obj){ %>
+    <% obj.forEach(function(items){ %>
+        <br>
+        <tr>
+            <td><%=items%></td>
+        </tr>
+
+    <% }) %>
+    <% } %>
+    </tbody>
+
+</form>
+</body>
+</html>

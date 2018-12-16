@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		form{
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 10%;
+			display: block;
+			width: 50%;
+		}
+
+		table{
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 5%;
+			width: 50%;
+		}
+
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+	<nav> <p style="margin-left: 38vw;font-family: 'Righteous', cursive; font-size: xx-large;">TSP Dashboard</p> </nav>
+
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+      <a href="#name"><span class="white-text name">TSP</span></a>
+      <a href="#email"><span class="white-text email">Username</span></a>
+    </div></li>
+    <li><div class="divider"></div></li>
+    <li><a class="waves-effect" href="#!">Logout</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: xx-large;">menu</i></a>
+ 
+
+	  	<form action="/upload/<%=message%>" enctype="multipart/form-data" method="POST">
+
+		    <div class="file-field input-field">
+		      <div class="btn">
+		        <span>File</span>
+		        <input type="file" accept=".doc,.docx,.xml,.csv,.xls" multiple>
+		      </div>
+		      <div class="file-path-wrapper">
+		        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+		      </div>
+
+		    </div>
+		    <div>
+                <input type="submit" value="Upload">
+            </div>
+
+  		</form>
+
+  		<table class="striped highlight centered responsive-table">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+       <script>
+       		 var elem = document.querySelector('.sidenav');
+  var instance = M.Sidenav.init(elem, 'left',true,250,200);
+       </script>
+
+</body>
+</html>
