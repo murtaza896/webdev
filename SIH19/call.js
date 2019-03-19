@@ -2,8 +2,8 @@ var request = require("request");
 var fs = require('fs');
 
 function outboundCall(numbers, lang){
-  var accountSid = "student580";
-  var accountToken = "edc82e540212f12b53c661755600bbc2d79d5a96";
+  var accountSid = "";
+  var accountToken = "";
   var encoding = Buffer.from(accountSid + ':' + accountToken).toString('base64');
   var options = { method: 'POST',
     url: 'https://api.exotel.com/v2/accounts/'+ accountSid + '/campaigns',
@@ -39,8 +39,8 @@ function outboundCall(numbers, lang){
 
 
 function outboundCall2(number, lang){
-  var accountSid = "student580";
-  var accountToken = "edc82e540212f12b53c661755600bbc2d79d5a96";
+  var accountSid = "";
+  var accountToken = "";
   // var appid = "214054";
   // var CallerId = "08047103685";
   var encoding = Buffer.from(accountSid + ':' + accountToken).toString('base64');
@@ -88,8 +88,8 @@ function outboundCall2(number, lang){
 }
 
 function outboundSms(number, lang){
-  var accountSid = "student580";
-  var accountToken = "edc82e540212f12b53c661755600bbc2d79d5a96";
+  var accountSid = "";
+  var accountToken = "";
   // var appid = "214054";
   // var CallerId = "08047103685";
   var encoding = Buffer.from(accountSid + ':' + accountToken).toString('base64');
