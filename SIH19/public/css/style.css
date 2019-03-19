@@ -1,0 +1,46 @@
+#particles-js {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+} 
+
+body{
+  /* height: 100%;
+  margin: 0; */
+
+  /* yellow - grey - black */
+  /* background: linear-gradient(230deg, #1b736e, #138a83, #00a298, #1ebd90, #61d578, #a7e854, #f5f525, #1b736e, #138a83, #00a298); */
+
+  /* grey - black - grey */
+  /* background-image: linear-gradient(to right bottom, #7c7c76, #6a7169, #576560, #455a5b, #374d56, #334751, #30404c, #2d3a46, #2d3a41, #2e393d, #313839, #343636); */
+/* 
+background: linear-gradient(to right bottom, #355C7D, #6C5B7B, #C06C84);
+background-attachment: fixed; */
+
+background: linear-gradient(234deg, #7f7fd5, #86a8e7, #7f7fd5);
+background-size: 600% 600%;
+
+-webkit-animation: AnimationName 10s ease infinite;
+-moz-animation: AnimationName 10s ease infinite;
+animation: AnimationName 10s ease infinite;
+
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+

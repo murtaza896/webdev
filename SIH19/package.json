@@ -1,0 +1,24 @@
+{
+  "name": "sih19",
+  "version": "1.0.0",
+  "description": "Lightning Prediction",
+  "main": "call.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "mysql": "^2.16.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "sendotp": "^1.2.9",
+    "twilio": "^3.29.0"
+  }
+}
